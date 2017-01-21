@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>F1 World Champions</title>
+
+    <link rel="shortcut icon" type="image/png" href="fav.ico" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+    <link href="assets/lib/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet">
+    <link href="assets/lib/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- build:css css/styles.css -->
+    <link href="assets/css/main.min.css" rel="stylesheet">
+    <!-- endbuild -->
+
+</head>
+
+<body ng-app="f1WorldChampions">
+
+    <div>
+        <div ui-view></div>
+    </div>
+
+    <script src="assets/lib/angular/angular.js"></script>
+    <script src="assets/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="assets/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="assets/lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="assets/lib/jquery/dist/jquery.min.js"></script>
+
+    <!-- build:js scripts/app.min.js -->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="shared/constants.js"></script>
+    <script src="shared/services.js"></script>
+    <script src="shared/templates.js"></script>
+    <script src="components/home/home.config.js"></script>
+    <script src="components/sport/sport.config.js"></script>
+    <script src="components/season/season.config.js"></script>
+    <script src="components/season/season.service.js"></script>
+    <script src="components/season/season.controller.js"></script>
+    <!-- endbuild -->
+
+</body>
+
+</html>

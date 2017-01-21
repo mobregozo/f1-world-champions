@@ -1,0 +1,6 @@
+{
+    "config": {
+        "url": "http://ergast.com/api/f1/",
+        "format": ".json"
+    }
+}
