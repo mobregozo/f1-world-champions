@@ -1,0 +1,72 @@
+<div class="padding-view header-row">
+    <h1>Round #{{vm.raceData.round}}</h1>
+</div>
+<div class="info-panel clearfix radius-bottom">
+    <div ng-if="!vm.loadedWinners">
+        <div class="text-center">
+            <img class="loading-img" src="assets/images/loading.gif" alt="">
+        </div>
+    </div>
+    <div ng-if="vm.loadedWinners">
+        <div class="col-xs-12 col-md-5 col-lg-6 color-black">
+            <div class="panel panel-default">
+                <div class="panel-heading">RACE INFORMATION</div>
+                <div class="panel-body">
+                    <h3><i class="fa fa-flag-checkered"></i>&nbsp;&nbsp;{{vm.raceData.raceName}}</h3>
+                    <h3><i class="fa fa-car"></i>&nbsp;&nbsp;{{vm.raceData.Circuit.circuitName}}</h3>
+                    <h3><i class="fa fa-globe"></i>&nbsp;&nbsp;{{vm.raceData.Circuit.Location.locality}}, {{vm.raceData.Circuit.Location.country}}</h3>
+                    <h3><i class="fa fa-calendar"></i>&nbsp;&nbsp;{{vm.raceData.date}}</h3>
+                    <h3>
+                        <i class="fa fa-wikipedia-w"></i>&nbsp;&nbsp;
+                        <a class="link color-black" ng-href="{{vm.raceData.Circuit.url}}" target="_blank">Find More Info</a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-7 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">RACE RESULTS</div>
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search for a driver" ng-model="searchDriver">
+                        </div>
+                    </form>
+                    <table class="table table-responsive table-bordered ">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <i class="fa fa-flag-checkered"></i> Position
+                                    <span ng-show="sortType == 'round' && !sortReverse" class="order-caret fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'round' && sortReverse" class="order-caret fa fa-caret-up"></span>
+                                </td>
+                                <td>
+                                    <a ng-click="sortType = 'familyName'; sortReverse = !sortReverse">
+                                    Driver Name
+                                    <span ng-show="sortType == 'familyName' && !sortReverse" class="order-caret fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'familyName' && sortReverse" class="order-caret fa fa-caret-up"></span>
+                                </a>
+                                </td>
+                                <td class="hidden-xs">
+                                    <a ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                                    Constructor Name
+                                    <span ng-show="sortType == 'name' && !sortReverse" class="order-caret fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'name' && sortReverse" class="order-caret fa fa-caret-up"></span>
+                                </a>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody class="color-black">
+                            <tr ng-repeat="driver in vm.raceData.Results | orderBy:sortType:sortReverse | filter:searchDriver">
+                                <td># {{driver.position}}</td>
+                                <td>{{driver.Driver.familyName}}, {{driver.Driver.givenName}} </td>
+                                <td class="hidden-xs">{{driver.Constructor.name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

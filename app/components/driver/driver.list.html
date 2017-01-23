@@ -1,0 +1,36 @@
+<div class="padding-view header-row">
+    <h1>ALL TIME DRIVER LIST</h1>
+</div>
+<div class="table-container">
+    <div ng-if="!vm.loadedResults">
+        <div class="text-center">
+            <img class="loading-img" src="assets/images/loading.gif" alt="">
+        </div>
+    </div>
+    <div ng-if="vm.loadedResults">
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <td>
+                        <i class="fa fa-user" aria-hidden="true"></i> Family Name
+                    </td>
+                    <td>
+                        Nationality
+                    </td>
+                    <td class="hidden-xs">
+                        Date of birth
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="driver in vm.driverList track by $index" ui-sref="app.driver.detail({driverId:driver.familyName})">
+                    <td>{{driver.familyName}}, {{driver.givenName }}</td>
+                    <td>{{driver.nationality}}</td>
+                    <td class="hidden-xs">{{driver.dateOfBirth}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <ul uib-pagination ng-change="vm.pageChange()" previous-text="&lsaquo;" next-text="&rsaquo;" total-items="vm.table.totalItems" ng-model="vm.table.currentPage" items-per-page="vm.table.size" max-size="5" class="pagination-sm" boundary-link-numbers="true"
+            rotate="false "></ul>
+    </div>
+</div>

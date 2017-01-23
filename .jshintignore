@@ -2,3 +2,4 @@
 ./app/shared/templates.js
 ./app/shared/**/*.spec.js
 ./app/components/**/*.spec.js
+./app/config.js

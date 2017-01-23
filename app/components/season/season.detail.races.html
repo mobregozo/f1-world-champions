@@ -1,0 +1,57 @@
+<div class="padding-view header-row">
+    <h1>SEASON {{vm.seasonSelected}} RACE WINNERS</h1>
+</div>
+<div class="input-row">
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Search for a winner or circuit" ng-model="searchRace">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="table-container">
+    <div ng-if="!vm.loadedWinners && !vm.loadedChampion">
+        <div class="text-center">
+            <img class="loading-img" src="assets/images/loading.gif" alt="">
+        </div>
+    </div>
+    <table class="table table-hover table-responsive" ng-if="vm.loadedWinners && vm.loadedChampion">
+        <thead>
+            <tr>
+                <td>
+                    <a ng-click="vm.sortType = 'raceName'; vm.sortReverse = !vm.sortReverse">
+                        <i class="fa fa-flag-checkered"></i> Round
+                        <span ng-show="vm.sortType == 'raceName' && vm.sortReverse" class="order-caret fa fa-caret-down"></span>
+                        <span ng-show="vm.sortType == 'raceName' && !vm.sortReverse" class="order-caret fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td class="hidden-xs">
+                    <a ng-click="vm.sortType = 'circuitName'; vm.sortReverse = !vm.sortReverse">
+                        Ciurcuit
+                        <span ng-show="vm.sortType == 'circuitName' && vm.sortReverse" class="order-caret fa fa-caret-down"></span>
+                        <span ng-show="vm.sortType == 'circuitName' && !vm.sortReverse" class="order-caret fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="vm.sortType = 'familyName'; vm.sortReverse = !vm.sortReverse">
+                        Driver Name
+                        <span ng-show="vm.sortType == 'familyName' && vm.sortReverse" class="order-caret fa fa-caret-down"></span>
+                        <span ng-show="vm.sortType == 'familyName' && !vm.sortReverse" class="order-caret fa fa-caret-up"></span>
+                    </a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="winner in vm.winnerList | orderBy:vm.sortOption:vm.sortReverse | filter:searchRace track by $index" ui-sref="app.season.detail.race({raceId:winner.round})">
+                <td># {{winner.round}} <span class="hidden-xs"> - {{winner.raceName}} </span></td>
+                <td class="hidden-xs">{{winner.Circuit.circuitName}} <span class="hidden-xs hidden-sm">({{winner.Circuit.Location.country}})</span></td>
+                <td> {{winner.Results[0].Driver.familyName}}, {{winner.Results[0].Driver.givenName}}
+                    <span class="badge pull-right" ng-if="winner.Results[0].Driver.code === vm.championDriver.code">&nbsp;<i class="fa fa-trophy" aria-hidden="true"></i>
+                    <span class="hidden-xs"> &nbsp;&nbsp;Season Champion</span> &nbsp;</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

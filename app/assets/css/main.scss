@@ -1,3 +1,7 @@
+/**    
+Fixes and Font Definition
+*/
+
 html {
     background: url(../images/bg.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -5,17 +9,187 @@ html {
     -o-background-size: cover;
     background-size: cover;
     body {
+        font-family: 'Lato', serif;
         background-color: transparent;
+        overflow-x: hidden;
     }
 }
 
+.container {
+    overflow-y: hidden!important;
+}
+
+
+/**    
+Color Definition
+*/
+
+$red: #cc0000;
+$soft-red: #d6b1b1;
+$soft-grey: rgba(255, 255, 255, 0.7);
+$soft-black: rgba(47, 47, 45, 0.89);
+$table-background: rgba(81, 92, 88, 0.44);
+$transparent-white: rgba(81, 92, 88, 0.54);
+$caret-red:#da7a7a;
+
+/**    
+Radius mixing
+*/
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+
+/**    
+ Common CSS 
+*/
+
+.loading-img {
+    width: 100px;
+}
+
+.header-row {
+    background-color: $soft-black;
+}
+
+.form-group {
+    .input-group-addon {
+        background: black;
+        color: white;
+    }
+}
+
+a {
+    color: white;
+    &:hover {
+        cursor: pointer;
+        color: white;
+    }
+}
+
+.color-black {
+    color: black;
+}
+
+.padding-view {
+    padding: 10px;
+}
+
+.radius-bottom {
+    @include border-radius(0px 0 10px 10px);
+}
+
+.radius-top {
+    @include border-radius(10px 10px 0px 0);
+}
+
+
+/**    
+ Pagination 
+*/
+
+.pagination {
+    li {
+        a {
+            color: $red;
+            &.active {
+                background-color: $red;
+                color: white;
+                &:hover {
+                    background-color: $red;
+                    color: white;
+                }
+            }
+            &:hover {
+                color: black;
+            }
+        }
+        &.active,
+         :hover,
+         :focus {
+            a {
+                background-color: $red;
+                border-color: $red;
+            }
+        }
+    }
+    .active {
+        a {
+            background-color: $red;
+            border-color: $red;
+            color: white;
+            &:hover {
+                background-color: $red;
+                border-color: $red;
+                color: white;
+            }
+        }
+    }
+}
+
+
+/**    
+ Carousel  
+*/
+
+.carousel {
+    .carousel-inner {
+        background-color: transparent;
+        .carousel-caption {
+            -webkit-box-shadow: 8px 8px 15px 0px rgba(50, 50, 50, 0.67);
+            -moz-box-shadow: 8px 8px 15px 0px rgba(50, 50, 50, 0.67);
+            box-shadow: 8px 8px 15px 0px rgba(50, 50, 50, 0.67);
+            @include border-radius(10px);
+            background-color: $transparent-white;
+        }
+        img {
+            width: 100%;
+            height: 590px;
+            object-fit: cover;
+            @include border-radius(47px);
+            border: solid 2px white;
+        }
+    }
+    .carousel-indicators {
+        li {
+            width: 20px;
+            height: 20px;
+            margin: 0 15px;
+            border: solid 2px white;
+            &.active,
+            &:hover {
+                background-color: white;
+            }
+        }
+    }
+    .carousel-control {
+        background-image: none;
+        .glyphicon {
+            color: $red;
+            font-size: 73px;
+        }
+    }
+}
+
+
+/**    
+NavBar
+*/
+
 .navbar-default {
-    background: rgba(47, 47, 45, 0.89);
+    background: $soft-black;
     padding-top: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid transparent;
     .navbar-brand {
+        padding-top: 0;
         img {
+            width: 93px;
+            margin: 4px;
             &:hover {
                 transform: scale(1.10);
             }
@@ -28,12 +202,12 @@ html {
                 color: white;
                 &:focus,
                 &:hover {
-                    background: transparent;
                     color: white;
+                    background: transparent;
                 }
                 &:after {
                     width: 100%;
-                    background: #3598db;
+                    background: $red;
                     content: '';
                     display: block;
                     height: 4px;
@@ -43,11 +217,11 @@ html {
             >a {
                 text-shadow: none;
                 font-size: 12px;
-                color: #fff;
                 letter-spacing: 0.36px;
                 padding-top: 10px;
                 padding-bottom: 10px;
                 position: relative;
+                color: white;
                 transition: width .5s ease-out, background-color .5s ease;
                 &:after {
                     content: '';
@@ -59,11 +233,11 @@ html {
                     transition: width .5s ease-out, background-color .5s ease;
                 }
                 &:hover {
-                    cursor: pointer;
                     color: white;
                     &:after {
                         width: 100%;
-                        background: #3598db;
+                        color: white;
+                        background: $red;
                     }
                 }
             }
@@ -71,36 +245,77 @@ html {
     }
 }
 
-.form-group {
-    .input-group-addon {
-        background: black;
-        color: white;
+.input-row {
+    @extend .padding-view;
+    background: $red;
+    .form-group {
+        margin: 0;
+        input {
+            border-color: white;
+        }
+    }
+}
+
+.breadcrumb {
+    margin: 0;
+    a {
+        color: black;
+    }
+}
+
+.info-panel {
+    @extend .padding-view;
+    background: $soft-grey;
+    .panel {
+        background-color: $transparent-white;
+        tbody {
+            background: $soft-grey;
+        }
+        thead {
+            background-color: black;
+        }
+        .panel-heading {
+            font-size: 16PX;
+            background: $soft-red;
+        }
     }
 }
 
 .content-view {
+    @include border-radius(14px);
     margin: 99px 11px;
     padding: 10px;
     color: #fff;
-    background: rgba(128, 128, 128, 0.41);
-    border-radius: 14px;
 }
 
-.table {
-    tbody {
-        background: rgba(76, 87, 83, 0.81);
-        tr {
-            &:hover {
-                color: black;
-                cursor: pointer;
+.table-container {
+    @extend .padding-view;
+    background-color: $soft-grey;
+    .table {
+        .order-caret {
+            position: absolute;
+            margin: 4px 8px;
+        }
+        .badge {
+            background-color: $caret-red;
+        }
+        tbody {
+            background: $table-background;
+            tr {
+                &:hover {
+                    color: black;
+                    cursor: pointer;
+                }
+                &.active {
+                    td {
+                        background-color: $soft-red;
+                    }
+                }
             }
         }
-    }
-    a {
-        color: white;
-    }
-    thead {
-        background-color: black;
+        thead {
+            background-color: black;
+        }
     }
 }
 
@@ -114,8 +329,23 @@ html {
 
 @media screen and (min-width: 992px) {
     .content-view {
-        margin: 150px auto;
+        margin: 100px auto;
         padding: 30px;
+    }
+    .padding-view {
+        padding: 20px 30px;
+    }
+    .navbar-default {
+        padding-right: 15px;
+        .navbar-collapse {
+            padding-right: 15px;
+        }
+        .navbar-brand {
+            img {
+                width: 140px;
+                margin: 0px;
+            }
+        }
     }
 }
 

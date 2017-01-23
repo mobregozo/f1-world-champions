@@ -1,3 +1,6 @@
+/**    
+Fixes and Font Definition
+*/
 html {
   background: url(../images/bg.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -5,24 +8,147 @@ html {
   -o-background-size: cover;
   background-size: cover; }
   html body {
-    background-color: transparent; }
+    font-family: 'Lato', serif;
+    background-color: transparent;
+    overflow-x: hidden; }
 
+.container {
+  overflow-y: hidden !important; }
+
+/**    
+Color Definition
+*/
+/**    
+Radius mixing
+*/
+/**    
+ Common CSS 
+*/
+.loading-img {
+  width: 100px; }
+
+.header-row {
+  background-color: rgba(47, 47, 45, 0.89); }
+
+.form-group .input-group-addon {
+  background: black;
+  color: white; }
+
+a {
+  color: white; }
+  a:hover {
+    cursor: pointer;
+    color: white; }
+
+.color-black {
+  color: black; }
+
+.padding-view, .input-row, .info-panel, .table-container {
+  padding: 10px; }
+
+.radius-bottom {
+  -webkit-border-radius: 0px 0 10px 10px;
+  -moz-border-radius: 0px 0 10px 10px;
+  -ms-border-radius: 0px 0 10px 10px;
+  border-radius: 0px 0 10px 10px; }
+
+.radius-top {
+  -webkit-border-radius: 10px 10px 0px 0;
+  -moz-border-radius: 10px 10px 0px 0;
+  -ms-border-radius: 10px 10px 0px 0;
+  border-radius: 10px 10px 0px 0; }
+
+/**    
+ Pagination 
+*/
+.pagination li a {
+  color: #cc0000; }
+  .pagination li a.active {
+    background-color: #cc0000;
+    color: white; }
+    .pagination li a.active:hover {
+      background-color: #cc0000;
+      color: white; }
+  .pagination li a:hover {
+    color: black; }
+
+.pagination li.active a,
+.pagination li :hover a,
+.pagination li :focus a {
+  background-color: #cc0000;
+  border-color: #cc0000; }
+
+.pagination .active a {
+  background-color: #cc0000;
+  border-color: #cc0000;
+  color: white; }
+  .pagination .active a:hover {
+    background-color: #cc0000;
+    border-color: #cc0000;
+    color: white; }
+
+/**    
+ Carousel  
+*/
+.carousel .carousel-inner {
+  background-color: transparent; }
+  .carousel .carousel-inner .carousel-caption {
+    -webkit-box-shadow: 8px 8px 15px 0px rgba(50, 50, 50, 0.67);
+    -moz-box-shadow: 8px 8px 15px 0px rgba(50, 50, 50, 0.67);
+    box-shadow: 8px 8px 15px 0px rgba(50, 50, 50, 0.67);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    background-color: rgba(81, 92, 88, 0.54); }
+  .carousel .carousel-inner img {
+    width: 100%;
+    height: 590px;
+    object-fit: cover;
+    -webkit-border-radius: 47px;
+    -moz-border-radius: 47px;
+    -ms-border-radius: 47px;
+    border-radius: 47px;
+    border: solid 2px white; }
+
+.carousel .carousel-indicators li {
+  width: 20px;
+  height: 20px;
+  margin: 0 15px;
+  border: solid 2px white; }
+  .carousel .carousel-indicators li.active, .carousel .carousel-indicators li:hover {
+    background-color: white; }
+
+.carousel .carousel-control {
+  background-image: none; }
+  .carousel .carousel-control .glyphicon {
+    color: #cc0000;
+    font-size: 73px; }
+
+/**    
+NavBar
+*/
 .navbar-default {
   background: rgba(47, 47, 45, 0.89);
   padding-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid transparent; }
-  .navbar-default .navbar-brand img:hover {
-    transform: scale(1.1); }
+  .navbar-default .navbar-brand {
+    padding-top: 0; }
+    .navbar-default .navbar-brand img {
+      width: 93px;
+      margin: 4px; }
+      .navbar-default .navbar-brand img:hover {
+        transform: scale(1.1); }
   .navbar-default .navbar-nav li.active > a {
     background: transparent;
     color: white; }
     .navbar-default .navbar-nav li.active > a:focus, .navbar-default .navbar-nav li.active > a:hover {
-      background: transparent;
-      color: white; }
+      color: white;
+      background: transparent; }
     .navbar-default .navbar-nav li.active > a:after {
       width: 100%;
-      background: #3598db;
+      background: #cc0000;
       content: '';
       display: block;
       height: 4px;
@@ -30,11 +156,11 @@ html {
   .navbar-default .navbar-nav li > a {
     text-shadow: none;
     font-size: 12px;
-    color: #fff;
     letter-spacing: 0.36px;
     padding-top: 10px;
     padding-bottom: 10px;
     position: relative;
+    color: white;
     transition: width .5s ease-out, background-color .5s ease; }
     .navbar-default .navbar-nav li > a:after {
       content: '';
@@ -45,40 +171,76 @@ html {
       background: transparent;
       transition: width .5s ease-out, background-color .5s ease; }
     .navbar-default .navbar-nav li > a:hover {
-      cursor: pointer;
       color: white; }
       .navbar-default .navbar-nav li > a:hover:after {
         width: 100%;
-        background: #3598db; }
+        color: white;
+        background: #cc0000; }
 
-.form-group .input-group-addon {
-  background: black;
-  color: white; }
+.input-row {
+  background: #cc0000; }
+  .input-row .form-group {
+    margin: 0; }
+    .input-row .form-group input {
+      border-color: white; }
+
+.breadcrumb {
+  margin: 0; }
+  .breadcrumb a {
+    color: black; }
+
+.info-panel {
+  background: rgba(255, 255, 255, 0.7); }
+  .info-panel .panel {
+    background-color: rgba(81, 92, 88, 0.54); }
+    .info-panel .panel tbody {
+      background: rgba(255, 255, 255, 0.7); }
+    .info-panel .panel thead {
+      background-color: black; }
+    .info-panel .panel .panel-heading {
+      font-size: 16PX;
+      background: #d6b1b1; }
 
 .content-view {
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  -ms-border-radius: 14px;
+  border-radius: 14px;
   margin: 99px 11px;
   padding: 10px;
-  color: #fff;
-  background: rgba(128, 128, 128, 0.41);
-  border-radius: 14px; }
+  color: #fff; }
 
-.table tbody {
-  background: rgba(76, 87, 83, 0.81); }
-  .table tbody tr:hover {
-    color: black;
-    cursor: pointer; }
-
-.table a {
-  color: white; }
-
-.table thead {
-  background-color: black; }
+.table-container {
+  background-color: rgba(255, 255, 255, 0.7); }
+  .table-container .table .order-caret {
+    position: absolute;
+    margin: 4px 8px; }
+  .table-container .table .badge {
+    background-color: #da7a7a; }
+  .table-container .table tbody {
+    background: rgba(81, 92, 88, 0.44); }
+    .table-container .table tbody tr:hover {
+      color: black;
+      cursor: pointer; }
+    .table-container .table tbody tr.active td {
+      background-color: #d6b1b1; }
+  .table-container .table thead {
+    background-color: black; }
 
 /* Small devices (tablets, 768px and up) */
 /* Medium devices (desktops, 992px and up) */
 @media screen and (min-width: 992px) {
   .content-view {
-    margin: 150px auto;
-    padding: 30px; } }
+    margin: 100px auto;
+    padding: 30px; }
+  .padding-view, .input-row, .info-panel, .table-container {
+    padding: 20px 30px; }
+  .navbar-default {
+    padding-right: 15px; }
+    .navbar-default .navbar-collapse {
+      padding-right: 15px; }
+    .navbar-default .navbar-brand img {
+      width: 140px;
+      margin: 0px; } }
 
 /* Large devices (large desktops, 1200px and up) */

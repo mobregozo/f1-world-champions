@@ -1,65 +1,70 @@
-<h1>AVAILABLE SEASONS</h1>
-<form>
-    <div class="form-group">
-        <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-search"></i></div>
-            <input type="text" class="form-control" placeholder="Search for a season" ng-model="searchSeason">
+<div class="padding-view header-row">
+    <h1>WORLD CHAMPIONS BY SEASON</h1>
+</div>
+<div class="input-row">
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Search for a season" ng-model="searchSeason">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="table-container">
+    <div ng-if="!vm.loadedResults">
+        <div class="text-center">
+            <img class="loading-img" src="assets/images/loading.gif" alt="">
         </div>
     </div>
-</form>
-
-<table class="table table-hover table-responsive">
-    <thead>
-        <tr>
-            <td>
-                <a ng-click="sortType = 'season'; sortReverse = !sortReverse">
-                    Season  
-                    <span ng-show="sortType == 'season' && !sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'season' && sortReverse" class="fa fa-caret-up"></span>
-                </a>
-            </td>
-            <td>
-                <a ng-click="sortType = 'givenName'; sortReverse = !sortReverse">
-                    First Name 
-                    <span ng-show="sortType == 'givenName' && !sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'givenName' && sortReverse" class="fa fa-caret-up"></span>
-                </a>
-            </td>
-            <td>
-                <a ng-click="sortType = 'familyName'; sortReverse = !sortReverse">
-                    Last Name 
-                    <span ng-show="sortType == 'familyName' && !sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'familyName' && sortReverse" class="fa fa-caret-up"></span>
-                </a>
-            </td>
-            <td class="hidden-xs">
-                <a ng-click="sortType = 'nationality'; sortReverse = !sortReverse">
-                    Nationality 
-                    <span ng-show="sortType == 'nationality' && !sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'nationality' && sortReverse" class="fa fa-caret-up"></span>
-                </a>
-            </td>
-            <td class="hidden-xs">
-                <a ng-click="sortType = 'name'; sortReverse = !sortReverse">
-                    Constructor 
-                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
-                    <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
-                </a>
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="season in vm.seasonList | orderBy:sortType:sortReverse | filter:searchSeason" ui-sref="app.season.detail({seasonId:season.season})">
-            <td>{{season.season}}</td>
-            <td>{{season.DriverStandings[0].Driver.givenName }}</td>
-            <td>{{season.DriverStandings[0].Driver.familyName}}</td>
-            <td class="hidden-xs">{{season.DriverStandings[0].Driver.nationality}}</td>
-            <td class="hidden-xs">{{season.DriverStandings[0].Constructors[0].name}}</td>
-        </tr>
-    </tbody>
-</table>
-<div ng-if="!vm.loadedResults">
-    <div class="text-center">
-        <img style="width:50px;" src="assets/images/loading.gif" alt="">
-    </div>
+    <table ng-if="vm.loadedResults" class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <td>
+                    <a ng-click="vm.sortType = 'season'; vm.sortReverse = !vm.sortReverse">
+                        <i class="fa fa-trophy" aria-hidden="true"></i> Season
+                        <span ng-show="vm.sortType == 'season' && vm.sortReverse" class="order-caret fa fa-caret-down"></span>
+                        <span ng-show="vm.sortType == 'season' && !vm.sortReverse" class="order-caret fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="vm.sortType = 'familyName'; vm.sortReverse = !vm.sortReverse">
+                        Driver Name
+                        <span ng-show="vm.sortType == 'familyName' && vm.sortReverse" class="order-caret fa fa-caret-down"></span>
+                        <span ng-show="vm.sortType == 'familyName' && !vm.sortReverse" class="order-caret fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td class="hidden-xs">
+                    <a ng-click="vm.sortType = 'points'; vm.sortReverse = !vm.sortReverse">
+                        Points
+                        <span ng-show="vm.sortType == 'points' && vm.sortReverse" class="order-caret fa fa-caret-down"></span>
+                        <span ng-show="vm.sortType == 'points' && !vm.sortReverse" class="order-caret fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td class="hidden-xs">
+                    <a ng-click="vm.sortType = 'wins'; vm.sortReverse = !vm.sortReverse">
+                        Wins
+                        <span ng-show="vm.sortType == 'wins' && vm.sortReverse" class="order-caret fa fa-caret-down"></span>
+                        <span ng-show="vm.sortType == 'wins' && !vm.sortReverse" class="order-caret fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td class="hidden-xs">
+                    <a ng-click="vm.sortType = 'name'; vm.sortReverse = !vm.sortReverse">
+                        Constructor
+                        <span ng-show="vm.sortType == 'name' && vm.sortReverse" class="order-caret fa fa-caret-down"></span>
+                        <span ng-show="vm.sortType == 'name' && !vm.sortReverse" class="order-caret fa fa-caret-up"></span>
+                    </a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="season in vm.seasonList | orderBy:vm.sortOption:vm.sortReverse  track by $index" ui-sref="app.season.detail.races({seasonId:season.season})">
+                <td>{{season.season}}</td>
+                <td>{{season.DriverStandings[0].Driver.familyName}}, {{season.DriverStandings[0].Driver.givenName }}</td>
+                <td class="hidden-xs">{{season.DriverStandings[0].points}}</td>
+                <td class="hidden-xs">{{season.DriverStandings[0].wins}}</td>
+                <td class="hidden-xs">{{season.DriverStandings[0].Constructors[0].name}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

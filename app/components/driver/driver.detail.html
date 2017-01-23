@@ -1,0 +1,26 @@
+<div class="padding-view header-row">
+    <h1>Driver Details</h1>
+</div>
+<div class="info-panel clearfix radius-bottom">
+    <div ng-if="!vm.loadedDriverInfo">
+        <div class="text-center">
+            <img class="loading-img" src="assets/images/loading.gif" alt="">
+        </div>
+    </div>
+    <div ng-if="vm.loadedDriverInfo">
+        <div class="col-xs-12 col-md-5 col-lg-6 color-black">
+            <div class="panel panel-default">
+                <div class="panel-heading">DRIVER BASIC INFORMATION</div>
+                <div class="panel-body">
+                    <h3><i class="fa fa-user"></i>&nbsp;&nbsp;{{vm.driverData.familyName}} , {{vm.driverData.givenName}}</h3>
+                    <h3><i class="fa fa-globe"></i>&nbsp;&nbsp;{{vm.driverData.nationality}}</h3>
+                    <h3><i class="fa fa-calendar"></i>&nbsp;&nbsp;{{vm.driverData.dateOfBirth}}</h3>
+                    <h3>
+                        <i class="fa fa-wikipedia-w"></i>&nbsp;&nbsp;
+                        <a class="link color-black" ng-href="{{vm.driverData.url}}" target="_blank">Read More</a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

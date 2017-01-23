@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('f1WorldChampions', ['ui.router', 'f1WorldChampions.config', 'f1WorldChampions.home', 'f1WorldChampions.season', 'f1WorldChampions.sport', 'ui.bootstrap'])
+    angular.module('f1WorldChampions', ['ui.router', 'ncy-angular-breadcrumb', 'templates', 'f1WorldChampions.config', 'f1WorldChampions.driver', 'f1WorldChampions.home', 'f1WorldChampions.season', 'f1WorldChampions.sport', 'ui.bootstrap'])
 
     .config(function($stateProvider, $urlRouterProvider) {
 
@@ -9,7 +9,7 @@
         $stateProvider.state('app', {
             url: '/',
             abstract: true,
-            templateUrl: 'shared/navigation.html'
+            templateUrl: 'navigation.html'
         });
 
         // if none of the above states are matched, use this as the fallback

@@ -1,37 +1,39 @@
 //jshint strict: false
 module.exports = function(config) {
-  config.set({
+    config.set({
 
-    basePath: './app',
+        basePath: './app',
 
-    files: [
-      'assets/lib/angular/angular.js',
-      'assets/lib/angular-ui-router/release/angular-ui-router.min.js',
-      'assets/lib/angular-mocks/angular-mocks.js',
-      'assets/lib/angular-bootstrap/ui-bootstrap.min.js',
-      'app.js',
-      'config.js',
-      'components/**/*.js',
-      'shared/**/*.js'
-    ],
+        files: [
+            'assets/lib/angular/angular.js',
+            'assets/lib/angular-ui-router/release/angular-ui-router.min.js',
+            'assets/lib/angular-mocks/angular-mocks.js',
+            'assets/lib/angular-bootstrap/ui-bootstrap.min.js',
+            'assets/lib/angular-breadcrumb/dist/angular-breadcrumb.min.js',
+            'app.js',
+            'config.js',
+            'components/**/*.*.js',
+            'components/**/*.js',
+            'shared/**/*.js'
+        ],
 
-    autoWatch: true,
+        autoWatch: true,
 
-    frameworks: ['jasmine'],
+        frameworks: ['jasmine'],
 
-    browsers: ['Chrome'],
+        browsers: ['Chrome'],
 
-    plugins: [
-      'karma-chrome-launcher',
-      'karma-firefox-launcher',
-      'karma-jasmine',
-      'karma-junit-reporter'
-    ],
+        plugins: [
+            'karma-chrome-launcher',
+            'karma-firefox-launcher',
+            'karma-jasmine',
+            'karma-junit-reporter'
+        ],
 
-    junitReporter: {
-      outputFile: 'test_out/unit.xml',
-      suite: 'unit'
-    }
+        junitReporter: {
+            outputFile: 'test_out/unit.xml',
+            suite: 'unit'
+        }
 
-  });
+    });
 };

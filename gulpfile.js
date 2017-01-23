@@ -23,28 +23,28 @@ var gulpNgConfig = require('gulp-ng-config');
 gulp.task('config', function() {
     gulp.src('config.json')
         .pipe(gulpNgConfig('f1WorldChampions.config'))
-        .pipe(gulp.dest('./app'))
+        .pipe(gulp.dest('app'))
 });
 
 
 const paths = {
-    sass: ['./app/**/*.scss', '!./app/assets/lib/**/*.scss'],
-    templateCache: ['./app/components/**/*.html', './app/shared/*.html'],
-    ng_annotate: ['./app/components/**/*.js', './app/shared/**/*.js'],
-    useref: ['./app/*.html'],
-    images: ['./app/assets/images/**/*'],
-    extras: ['./app/favicon.ico'],
-    libs: ['./app/assets/lib/**/*'],
-    jshint: ['./app/**/*.js']
+    sass: ['app/**/*.scss', '!app/assets/lib/**/*.scss'],
+    templateCache: ['app/shared/navigation.html', 'app/components/**/*.html'],
+    ng_annotate: ['app/components/**/*.js', 'app/shared/**/*.js'],
+    useref: ['app/*.html'],
+    images: ['app/assets/images/**/*.*'],
+    extras: ['app/favicon.ico'],
+    libs: ['app/assets/lib/**/*.*'],
+    jshint: ['app/**/*.js']
 };
 
 //Convert all views to Angular templatecache elements
 gulp.task('templatecache', function(done) {
-    gulp.src(['./app/components/**/*.html', './app/shared/*.html'])
+    gulp.src(paths.templateCache)
         .pipe(templateCache({
             standalone: true
         }))
-        .pipe(gulp.dest('./app/shared', {
+        .pipe(gulp.dest('app/shared', {
             override: true
         }))
         .on('end', done)
@@ -61,7 +61,7 @@ gulp.task('jshint', function() {
 
 //Transfor to verbose Angular dependency injection format
 gulp.task('ng_annotate', function(done) {
-    gulp.src(['./app/components/**/*.js', '!./app/components/**/*.spec.js'])
+    gulp.src(['app/components/**/*.js', '!app/components/**/*.spec.js'])
         .pipe(ngAnnotate({
             single_quotes: true
         }))
@@ -74,7 +74,7 @@ gulp.task('ng_annotate', function(done) {
 gulp.task('imagemin', function() {
     gulp.src(paths.images)
         .pipe(imagemin())
-        .pipe(gulp.dest('./dist/images/'));
+        .pipe(gulp.dest('./dist/assets/images/'));
 });
 
 // Copy all other files to dist directly
@@ -88,12 +88,12 @@ gulp.task('copy', function() {
 gulp.task('copy-libs', function() {
     // Copy extra html5bp files
     gulp.src(paths.libs)
-        .pipe(gulp.dest('./dist/lib'));
+        .pipe(gulp.dest('./dist/assets/lib'));
 });
 
 //Read Index annotations
 gulp.task('useref', ['ng_annotate', 'sass'], function(done) {
-    gulp.src('./app/*.html')
+    gulp.src('app/*.html')
         .pipe(useref())
         .pipe(gulpif('*.js', uglify({
             output: {
@@ -109,22 +109,22 @@ gulp.task('useref', ['ng_annotate', 'sass'], function(done) {
 gulp.task('sass-compile', ['clean-css'], function() {
     return gulp.src(paths.sass)
         .pipe(concat('main.scss'))
-        .pipe(gulp.dest('./app/assets/css'));
+        .pipe(gulp.dest('app/assets/css'));
 });
 
 //Compile all sass in one minified css file
 gulp.task('sass', ['sass-compile'], function(done) {
-    gulp.src('./app/assets/css/*.scss')
+    gulp.src('app/assets/css/*.scss')
         .pipe(sass())
         .on('error', sass.logError)
-        .pipe(gulp.dest('./app/assets/css/'))
+        .pipe(gulp.dest('app/assets/css/'))
         .pipe(minifyCss({
             keepSpecialComments: 0
         }))
         .pipe(rename({
             extname: '.min.css'
         }))
-        .pipe(gulp.dest('./app/assets/css/'))
+        .pipe(gulp.dest('app/assets/css/'))
         .on('end', done)
         .pipe(connect.reload());
 });
@@ -143,13 +143,13 @@ gulp.task('clean', function() {
 
 // Delete the dist directory
 gulp.task('clean-css', function() {
-    return gulp.src('./app/assets/css')
+    return gulp.src('app/assets/css')
         .pipe(clean());
 });
 
 gulp.task('connect', function() {
     connect.server({
-        root: ['./app'],
+        root: ['app'],
         livereload: true,
         port: 9000
 
@@ -186,23 +186,3 @@ gulp.task('watch', function() {
 gulp.task('prod', ['open-prod']);
 
 gulp.task('default', ['copy', 'copy-libs', 'config', 'sass', 'templatecache', 'ng_annotate', 'useref', 'imagemin', 'jshint', 'watch', 'connect', 'open']);
-
-// gulp.task('install', ['git-check'], function() {
-//     return bower.commands.install()
-//         .on('log', function(data) {
-//             gutil.log('bower', gutil.colors.cyan(data.id), data.message);
-//         });
-// });
-
-// gulp.task('git-check', function(done) {
-//     if (!sh.which('git')) {
-//         console.log(
-//             '  ' + gutil.colors.red('Git is not installed.'),
-//             '\n  Git, the version control system, is required to download Ionic.',
-//             '\n  Download git here:', gutil.colors.cyan('http://git-scm.com/downloads') + '.',
-//             '\n  Once git is installed, run \'' + gutil.colors.cyan('gulp install') + '\' again.'
-//         );
-//         process.exit(1);
-//     }
-//     done();
-// });

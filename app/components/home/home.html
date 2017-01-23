@@ -1,5 +1,18 @@
-<h1> WELCOME TO THE F1 WORLD CHAMPIONSHIP PORTAL</h1>
-<br>
-<h3>
-    Since Formula One World Championship’s inception in 1950, the sport has Constantly pushing the technological boundaries in order to find the quickest route to victory.
-</h3>
+<div class="padding-view header-row">
+    <h1>WELCOME TO THE F1 WORLD CHAMPIONSHIP PORTAL</h1>
+</div>
+<div class="info-panel radius-bottom">
+    <h3 class="color-black">
+        Since Formula One World Championship’s inception in 1950, the sport has Constantly pushing the technological boundaries in order to find the quickest route to victory.
+    </h3>
+    <br>
+    <div class="hidden-xs" uib-carousel active="vm.active" interval="vm.myInterval" no-wrap="vm.noWrapSlides">
+        <div uib-slide ng-repeat="img in vm.images" index="img.id">
+            <img ng-src="{{img.url}}" style="margin:auto;">
+            <div class="carousel-caption">
+                <h3>{{img.champion}} - Champion of the {{img.year}} Season</h3>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
