@@ -8,7 +8,8 @@ Regarding to the content, it shows the Seasons between 2005 and 2015 of the F1 W
 
 First thing to have installed is NodeJs because, we are going to use the NPM package manager.
 
-Once we have NPM installed, we could start adding the remaining dependencies, such as gulp which will cover the automation process of the App
+Once we have NPM installed, we could start adding the remaining dependencies, such as gulp which will cover the automation process of the App.
+
 All related task are described in the gulpfile.js
 
 `npm install -g gulp` or `npm install gulp `
@@ -29,9 +30,9 @@ By running the default gulp task, we are going to create a local http server to 
 
 ## Build the App for production
 
-Build the App, create a dist folder
+Run the distribution for production src code
 
-`gulp prod`
+`gulp open-prod`
 
 Zip the App for deployment purpose - depends on the Server
 
@@ -82,6 +83,7 @@ All test are under each components with the following name convention : *.spec.j
 - Added SASS preprocessor in order to type css code fast and clean.
 - Added angular-ui-router for a better experiencie when working with nested views.
 - Added callable methods inside controllers and services at the top, using a technique derived from Module Pattern.
+- Used IIFE in order to preven issues with the scope of the variables.
 
 ##Other Gulp task
 
@@ -90,3 +92,11 @@ All test are under each components with the following name convention : *.spec.j
 - Added task to convert view to angular-template-cache in order reduce the number of http calls ro tetrieve the views.
 - Created a task to move config.json object to a config value inside the angular app.
 - Added jsHint Linter in order to keep an standar in terms of the quality of the Code.
+
+##About me 
+
+Manuel Obregozo - Front End Developer.
+
+For further information, please refer to the following profiles:
+- Stackoverflow: http://stackoverflow.com/users/6098430/manuel-obregozo
+- Linkedin: https://ar.linkedin.com/in/manuelobregozo/en
