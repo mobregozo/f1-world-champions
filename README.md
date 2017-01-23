@@ -1,12 +1,12 @@
 # README #
 
-This is a SPA application, responsive developed using a mobile-first approach, based on an MVC architecture, developed with AngularJs as a main Framework.
+This is a SPA application, responsive web site developed using a mobile-first approach, based on an MVC architecture, developed with AngularJs as a main Framework.
 
 Regarding to the content, it shows the Seasons between 2005 and 2015 of the F1 World Championship, among with related info of every Season and Races.
 
 ## Dependencies and Dev-dependencies
 
-First thing to have installed is NodeJs because, we are going to use the NPP package manager.
+First thing to have installed is NodeJs because, we are going to use the NPM package manager.
 
 Once we have NPM installed, we could start adding the remaining dependencies, such as gulp which will cover the automation process of the App
 All related task are described in the gulpfile.js
